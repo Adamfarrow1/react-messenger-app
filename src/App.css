@@ -1,38 +1,249 @@
-.App {
-  text-align: center;
+
+:root{
+  --secondary: #F0F0F0;
+  --primary: #E7473C;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html{
+  background-color: var(--primary);
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  background-color: #1d1d1d;
+  overflow-x: hidden;
+  
+}
+.App{
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header{
+  color: rgb(214, 202, 202);
+  background-color: #E7473C;
+  border: #cc3f34 1px solid;
+  border-top: none;
+  height: 8vh;
+}
+
+.header-button{
+  height: 2em;
+  width: 10em;
+}
+
+#style-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--secondary);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--secondary);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--secondary);
+}
+
+.temp{
+  height: 100%;
+  width: 100%;
+}
+
+.send-btn{
+  border: none;
+  background: var(--primary);
+  border-radius: 10px;
+  width: 20%;
+}
+
+.timestamp{
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 5.5em;
+  font-size: .7em;
+
+}
+
+.chat-username{
+  color: var(--secondary);
+  font-size: 1.5em;
+  letter-spacing: .1em;
+
+}
+
+.sent{
+  margin-right: .5em;
+  margin-left: auto;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  background-color: var(--primary);
+  color: white;
+  padding: .6em;
+  border-radius: 4px;
+  max-width: 60%;
+  overflow-wrap: break-word ;
+}
+
+.recieve{
+  margin-right: auto;
+  margin-left: .5em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  background-color: rgb(95, 95, 107);
+  color: white;
+  padding: .6em;
+  border-radius: 4px;
+  max-width: 60%;
+  overflow-wrap: break-word ;
+}
+
+
+.content{
+  height: 92vh;
+}
+
+.sidebar{
+  background-color: var(--primary);
+  border: #cc3f34 1px solid;
+  border-top: none;
+  border-bottom: none;
+  height: 92vh;
+}
+
+.border--bottom{
+  border-bottom: #cc3f34 1px solid;
+}
+
+
+.text--primary{
+  color: var(--secondary);
+  font-size: 2em;
+}
+
+.test{
+  border: green 5px solid;
+}
+
+.messages{
+  background-color: var(--secondary);
+}
+
+
+.find-user{
+  width: 100%;
+  background: var(--primary);
+  color: var(--secondary);
+  border: none;
+  outline: none;
+  padding: 1em;
+}
+
+.Container{
+  height: 90vh;
+  background: var(--primary);
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+
+.login{
+  background: var(--secondary);
+
+  width: 20em !important; 
+  border-radius: 10px;
+}
+
+.submit-btn{
+  background-color: var(--primary);
+  border: none;
+  border-radius: 3px;
+  padding: .5em;
+}
+
+.logo{
+  font-weight: bold;
+  font-size: 1.6em;
+}
+
+input{
+  border: none;
+  padding-left: .6em;
+}
+
+
+.logout-btn{
+  background-color: var(--primary);
+  border-radius: 4px;
+  border: 1px var(--secondary) solid;
+  color: var(--secondary);
+
+}
+
+.username-header{
+  color: var(--secondary);
+  margin-left: 2em;
+  white-space: nowrap;
+}
+
+
+.userChat{
+  cursor: pointer;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  width: 100%;
+}
+
+.userChat:hover{
+  background:#cc3f34;
+}
+
+
+.messages-block{
+  height: 85vh;
+  overflow-y: auto;
+}
+
+
+
+.input-message{
+  align-self: flex-end;
+  margin-bottom: .8em;
+  border: none;
+  border-radius: 8px;
+  border: #1d1d1d 1px solid;
+  width: 100%;
+  height: 100%;
+}
+
+
+.last-message{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+
