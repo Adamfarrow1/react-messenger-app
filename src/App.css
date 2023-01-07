@@ -97,7 +97,7 @@ body{
 #search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--trinary);
   opacity: 1; /* Firefox */
-  text-align: center;
+
 
 }
 
