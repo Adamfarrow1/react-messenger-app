@@ -2,18 +2,16 @@
 import { useContext, useState } from "react";
 import {collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where} from "firebase/firestore";
 import { db } from "./firebase-config";
-import { async } from "@firebase/util";
 import { AuthContext } from "./context/AuthContext";
 
 import Chats from "./Chats";
 
 
-const Sidebar= () => {
+const Sidebar = () => {
 
 
     const [username, setUsername] = useState("");
     const [user, setUser] = useState(null);
-    const [err, setErr] = useState(false);
     const [userNotFound, setUserNotFound] = useState(false);
 
     const {currentUser} = useContext(AuthContext);
@@ -21,7 +19,7 @@ const Sidebar= () => {
     const handleSearch = async() =>{
         if(username === currentUser.displayName) return
         const q = query(collection(db, "users"), where("displayName", "==", username));
-        var found = false;
+        let found = false;
         try{
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) =>{
@@ -32,17 +30,14 @@ const Sidebar= () => {
 
             if(!found){
                 setUser(null);
-                setErr(true);
                 setUserNotFound(true)
             }
 
       
             if(username === "") setUserNotFound(false);
-            setErr(false)
         }
         catch(err){
             setUser(null);
-            setErr(true);
         }
     }
 

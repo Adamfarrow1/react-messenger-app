@@ -1,5 +1,5 @@
 import {  createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, Firestore, setDoc } from "firebase/firestore";
 import { auth } from "../firebase-config";
 import { useState } from "react";
 import { db } from "../firebase-config";
@@ -11,16 +11,33 @@ const Register = () => {
     const [err, setErr] = useState(false)
     const navigate = useNavigate();
 
+    let usernameAvailable = false;
+
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        
+
         const displayName = e.target[0].value;
+        const ref = Firestore.doc(`usernames/${displayName}`);
+        const { exists } = await ref.get();
+        usernameAvailable = !exists;
+
+        if(!usernameAvailable) return;
+        
+
         console.log(displayName);
         const email = e.target[1].value;
         const password = e.target[2].value;
         try{
         const res = await createUserWithEmailAndPassword(auth, email, password)
         await updateProfile(res.user, { displayName });
+        await setDoc(doc(db, "usernames", displayName), {
+            displayName,
+            uid: res.user.uid
+        })
+
+        
+
+
         await setDoc(doc(db, "users", res.user.uid),{
             uid: res.user.uid,
             email,
@@ -44,12 +61,13 @@ const Register = () => {
                 <p className="m-0 p-0 login-text mt-2 logo">Adam's chat</p>
                 <p className="m-0 p-0 login-text mt-2 title">Create Account</p>
                 <form onSubmit={handleSubmit} className="text-center">
-                    <input type="text" placeholder="Name" className="d-block mx-auto mt-4 input-lgreg" required/>
+                    <input type="text" placeholder="Username" className="d-block mx-auto mt-4 input-lgreg" required/>
                     <input type="text" placeholder="Email" className="d-block mx-auto mt-4 input-lgreg" required/>
                     <input type="text" placeholder="Password" className="d-block mx-auto mt-4 input-lgreg" required/>
                     <button className="mt-4 submit-btn">Sign up</button>
                 </form>
                 {err && <span className="no-account">Something went wrong</span>}
+                {!usernameAvailable && <span className="no-account">This username is already taken</span>}
                 <p className="mt-2 no-account">Have an account? <Link to="/login"> Login</Link></p>
             </div>
         </div>
