@@ -151,7 +151,8 @@ body{
   margin-left: auto;
   margin-top: .5em;
   margin-bottom: .5em;
-  background-color: var(--secondary);
+  /* background-color: #00e1ff;  backup color*/
+  background-color: #001aff;
   color: white;
   padding: .6em;
   border-radius: 4px;
@@ -272,6 +273,7 @@ input{
   padding-bottom: 1em;
   width: 100%;
   text-align: left !important ;
+  color: var(--trinary);
 }
 
 .userChat-displayName{
@@ -288,6 +290,7 @@ input{
   margin: 0;
   padding-left: .3em;
   font-size: small;
+  overflow-wrap: break-word ;
 }
 
 .userChats-date{
@@ -330,6 +333,17 @@ input{
 .chat-username{
   color: var(--trinary);
   font-size: 1.5em;
+}
+
+.not-found{
+  color: var(--trinary);
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 570px) {
+  .mobile-view{
+    display: none;
+  }
 }
 
 

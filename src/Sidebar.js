@@ -92,8 +92,8 @@ const Sidebar= () => {
         <div className="col-3 sidebar text-center">
             <div className="text-center border--bottom ">
                 <input id="search" type="search" placeholder="Find user" className="find-user" onKeyDown={handleKey} onChange={e=>setUsername(e.target.value)} value={username}/>
-                {user && <div className="userChat" onClick={handleSelect}>{user.displayName}</div>}
-                {userNotFound && <div>User Not Found</div> }
+                {user && <div className="userChat text-center" onClick={handleSelect}>{user.displayName}</div>}
+                {userNotFound && <div className="not-found">User Not Found</div> }
             </div>
             <Chats></Chats>
         </div>

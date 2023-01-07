@@ -40,6 +40,7 @@ const Chat = () => {
                 date:Timestamp.now()
             })
         })
+
         await updateDoc(doc(db, "userchats", currentUser.uid), {
             [data.chatId + ".lastMessage"]:{
                 text
