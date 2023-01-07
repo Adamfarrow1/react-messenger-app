@@ -44,13 +44,13 @@ const Register = () => {
                 <p className="m-0 p-0 login-text mt-2 logo">Adam's chat</p>
                 <p className="m-0 p-0 login-text mt-2 title">Create Account</p>
                 <form onSubmit={handleSubmit} className="text-center">
-                    <input type="text" placeholder="Name" className="d-block mx-auto mt-4" required/>
-                    <input type="text" placeholder="Email" className="d-block mx-auto mt-4" required/>
-                    <input type="text" placeholder="Password" className="d-block mx-auto mt-4" required/>
+                    <input type="text" placeholder="Name" className="d-block mx-auto mt-4 input-lgreg" required/>
+                    <input type="text" placeholder="Email" className="d-block mx-auto mt-4 input-lgreg" required/>
+                    <input type="text" placeholder="Password" className="d-block mx-auto mt-4 input-lgreg" required/>
                     <button className="mt-4 submit-btn">Sign up</button>
                 </form>
-                {err && <span>Something went wrong</span>}
-                <p className="mt-2">Have an account? <Link to="/login"> Login</Link></p>
+                {err && <span className="no-account">Something went wrong</span>}
+                <p className="mt-2 no-account">Have an account? <Link to="/login"> Login</Link></p>
             </div>
         </div>
      );

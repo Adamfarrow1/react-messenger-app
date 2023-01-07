@@ -38,11 +38,12 @@ const Chats = () => {
 
 
     return ( 
-        <div>
+        <div className="chats-scroll" id="style-1">
             {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) =>(
                 <div className="bottom--border userChat" key={chat[0]} onClick={()=>handleSelect(chat[1].userInfo)}>
-                    <span>{chat[1].userInfo?.displayName}</span>
+                    <span className="userChat-displayName">{chat[1].userInfo?.displayName}</span>
                     <p className="last-message">{chat[1].lastMessage?.text}</p> 
+                    <p className="userChats-date">{chat[1].date && chat[1].date.toDate().toLocaleTimeString('en-US')} {chat[1].date &&  chat[1].date.toDate().getMonth() + 1 }/{ chat[1].date && chat[1].date.toDate().getDay() + 1}/{chat[1].date &&  chat[1].date.toDate().getFullYear()}</p>
                 </div>
             ))}
         </div>

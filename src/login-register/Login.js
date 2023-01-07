@@ -35,12 +35,12 @@ const Login = () => {
                 <p className="m-0 p-0 login-text mt-2 logo">Adam's chat</p>
                 <p className="m-0 p-0 login-text mt-2 title">Login</p>
                 <form action="" className="text-center" onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Email" className="d-block mx-auto mt-4"/>
-                    <input type="text" placeholder="password" className="d-block mx-auto mt-4"/>
-                    <button type="submit" className="mt-4 submit-btn">Submit</button>
+                    <input type="text" placeholder="Email" className="d-block mx-auto mt-4 input-lgreg"/>
+                    <input type="text" placeholder="Password" className="d-block mx-auto mt-4 input-lgreg"/>
+                    <button type="submit" className="mt-4 submit-btn input-lgreg">Submit</button>
                 </form>
-                {err && <span>Something went wrong</span>}
-                <p className="mt-2">Don't have an account? <Link to="/register"> Register</Link></p>
+                {err && <span className="no-account">Something went wrong</span>}
+                <p className="mt-2 no-account">Don't have an account? <Link to="/register"> Register</Link></p>
             </div>
         </div>
      );

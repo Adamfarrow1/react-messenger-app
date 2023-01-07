@@ -3,8 +3,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { ChatContext } from "./context/ChatContext";
 import { db } from "./firebase-config";
 import { doc } from "firebase/firestore";
-import { async } from "@firebase/util";
-
 import { v4 as uuid } from "uuid";
 import { AuthContext } from "./context/AuthContext";
 
@@ -27,6 +25,7 @@ const Chat = () => {
     const [text, setText] = useState("");
 
     const {currentUser} = useContext(AuthContext);
+
 
 
     const handleSend = async () =>{
@@ -67,6 +66,12 @@ const Chat = () => {
         e.preventDefault();
     }
 
+    useEffect(() =>{
+        if(!currentUser){
+            setMessages([]);
+        }
+    }, [currentUser])
+
 
     const ref = useRef();
      useEffect (() => {
@@ -75,14 +80,14 @@ const Chat = () => {
 
     return ( 
         <>
-        <div className="messages-block" id="style-1" >
+        <div className="messages-block" id="style-2" >
             {messages.map((m) => (
                 <div ref={ref} className={currentUser.uid === m.senderId ? "sent" : "recieve"} key={m.id}>
                     <div>
                         {m.text}
                     </div>
                     <div>
-                        <p className="timestamp">{m.date.toDate().toLocaleTimeString('en-US')} {m.date.toDate().getFullYear()}/{m.date.toDate().getMonth() + 1 }/{m.date.toDate().getDay()}</p>
+                        <p className="timestamp">{m.date.toDate().toLocaleTimeString('en-US')} {m.date.toDate().getMonth() + 1 }/{m.date.toDate().getDay() + 1}/{m.date.toDate().getFullYear()}</p>
                     </div>
                 </div>
             ))}
