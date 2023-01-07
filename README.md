@@ -1,4 +1,4 @@
-#Adams messenger app
+# Adams messenger app
 <div><a href="https://adamschat.netlify.app/">This project is live here.<a/><div/>
 ---
 The purpose of this project was to learn react and firebase. The app is a realtime messenging app with user authentication.
