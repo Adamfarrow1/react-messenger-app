@@ -1,30 +1,28 @@
-import {  createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, Firestore, setDoc } from "firebase/firestore";
-import { auth } from "../firebase-config";
+import {  createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase-config";
 import { useState } from "react";
-import { db } from "../firebase-config";
 import { Link, useNavigate } from "react-router-dom";
-import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
     const [err, setErr] = useState(false)
     const navigate = useNavigate();
 
-    let usernameAvailable = false;
+    const [usernameAvailable, setUsernameAvailable] = useState(true);
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
 
         const displayName = e.target[0].value;
-        const ref = Firestore.doc(`usernames/${displayName}`);
-        const { exists } = await ref.get();
-        usernameAvailable = !exists;
-
-        if(!usernameAvailable) return;
+        const ref = doc(db, "usernames", displayName);
+        const snap = await getDoc(ref);
         
 
-        console.log(displayName);
+        if(usernameAvailable !== !snap.exists())
+            setUsernameAvailable(!snap.exists());
+        if(usernameAvailable) return;
+        
         const email = e.target[1].value;
         const password = e.target[2].value;
         try{
