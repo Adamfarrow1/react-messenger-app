@@ -19,9 +19,9 @@ const Register = () => {
         const snap = await getDoc(ref);
         
 
-        if(usernameAvailable !== !snap.exists())
-            setUsernameAvailable(!snap.exists());
-        if(usernameAvailable) return;
+        setUsernameAvailable(!snap.exists());
+        console.log(usernameAvailable)
+        if(!usernameAvailable) return;
         
         const email = e.target[1].value;
         const password = e.target[2].value;

@@ -36,7 +36,7 @@ const Login = () => {
                 <p className="m-0 p-0 login-text mt-2 title">Login</p>
                 <form action="" className="text-center" onSubmit={handleSubmit}>
                     <input type="text" placeholder="Email" className="d-block mx-auto mt-4 input-lgreg"/>
-                    <input type="text" placeholder="Password" className="d-block mx-auto mt-4 input-lgreg"/>
+                    <input type="password" placeholder="Password" className="d-block mx-auto mt-4 input-lgreg"/>
                     <button type="submit" className="mt-4 submit-btn input-lgreg">Submit</button>
                 </form>
                 {err && <span className="no-account">Something went wrong</span>}

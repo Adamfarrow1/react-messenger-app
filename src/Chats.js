@@ -14,13 +14,13 @@ const Chats = () => {
     const {currentUser} = useContext(AuthContext);
     const {dispatch} = useContext(ChatContext);
 
-    useEffect(() =>{
+    useEffect( () =>{
 
         const getChats = () =>{
             const unsub = onSnapshot(doc(db, "userchats", currentUser.uid), (doc) =>{
                 setChats(doc.data());
             })
-
+           
             return () =>{
                 unsub();
             }
@@ -39,7 +39,7 @@ const Chats = () => {
 
     return ( 
         <div className="chats-scroll" id="style-1">
-            {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) =>(
+            {chats && Object.entries(chats).sort((a,b)=>b[1].date - a[1].date).map((chat) =>(
                 <div className="bottom--border userChat" key={chat[0]} onClick={()=>handleSelect(chat[1].userInfo)}>
                     <span className="userChat-displayName">{chat[1].userInfo?.displayName}</span>
 
