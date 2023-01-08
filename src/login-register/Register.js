@@ -11,21 +11,30 @@ const Register = () => {
 
     const [usernameAvailable, setUsernameAvailable] = useState(true);
 
+    const [loading, setLoading] = useState(false);
+
     const handleSubmit = async (e) =>{
+       
         e.preventDefault();
-
+        setLoading(true);
         const displayName = e.target[0].value;
-        const ref = doc(db, "usernames", displayName);
-        const snap = await getDoc(ref);
-        
-
-        setUsernameAvailable(!snap.exists());
-        console.log(usernameAvailable)
-        if(!usernameAvailable) return;
         
         const email = e.target[1].value;
         const password = e.target[2].value;
         try{
+
+
+        const ref = doc(db, "usernames", displayName);
+        const snap = await getDoc(ref);
+        
+        setUsernameAvailable(!snap.exists());
+        console.log(!snap.exists())
+        if(snap.exists()){
+            setLoading(false);
+            return;
+        }
+
+
         const res = await createUserWithEmailAndPassword(auth, email, password)
         await updateProfile(res.user, { displayName });
         await setDoc(doc(db, "usernames", displayName), {
@@ -49,6 +58,8 @@ const Register = () => {
         catch (err){
             setErr(true);
         }
+
+        setLoading(false);
     
     }
 
@@ -62,6 +73,7 @@ const Register = () => {
                     <input type="text" placeholder="Username" className="d-block mx-auto mt-4 input-lgreg" required/>
                     <input type="text" placeholder="Email" className="d-block mx-auto mt-4 input-lgreg" required/>
                     <input type="text" placeholder="Password" className="d-block mx-auto mt-4 input-lgreg" required/>
+                    {loading && <div className="loader text-center"></div>}
                     <button className="mt-4 submit-btn">Sign up</button>
                 </form>
                 {err && <span className="no-account">Something went wrong</span>}

@@ -11,7 +11,10 @@ const Login = () => {
     const [err, setErr] = useState(false)
     const navigate = useNavigate();
 
+    const [loading, setLoading] = useState(false);
+
     const handleSubmit = async (e) =>{
+        setLoading(true);
         e.preventDefault();
         
         const email = e.target[0].value;
@@ -23,6 +26,7 @@ const Login = () => {
         catch (err){
             setErr(true);
         }
+        setLoading(false);
     
     }
 
@@ -37,9 +41,12 @@ const Login = () => {
                 <form action="" className="text-center" onSubmit={handleSubmit}>
                     <input type="text" placeholder="Email" className="d-block mx-auto mt-4 input-lgreg"/>
                     <input type="password" placeholder="Password" className="d-block mx-auto mt-4 input-lgreg"/>
+                    {loading && <div className="loader text-center"></div>}
                     <button type="submit" className="mt-4 submit-btn input-lgreg">Submit</button>
+                   
                 </form>
                 {err && <span className="no-account">Something went wrong</span>}
+                
                 <p className="mt-2 no-account">Don't have an account? <Link to="/register"> Register</Link></p>
             </div>
         </div>

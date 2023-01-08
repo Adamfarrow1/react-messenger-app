@@ -6,18 +6,20 @@
   /* --secondary: #F0F0F0;
   --primary: #E7473C; */
   overflow: hidden;
+  background-color:#1A202C;
 }
 
-html{
+#root{
   background-color: var(--primary);
-
+}
+html {
+  background-color: var(--primary)
 }
 
 body{
-  background-color: #1d1d1d;
+  background-color: var(--primary);
   overflow-x: hidden;
-  color: var(--trinary);
-  
+  color: var(--primary);
 }
 .App{
   height: 100vh;
@@ -28,7 +30,7 @@ body{
   background-color: var(--primary);
   border: var(--secondary) 1px solid;
   border-top: none;
-  border-left: none;
+
   height: 8vh;
 }
 
@@ -346,6 +348,91 @@ input{
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  color: #fff;
+}
+  .loader:before,
+  .loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+  }
+  .loader:after {
+    color: blue;
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+  }
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
+  }
+}
+
 
 
 
